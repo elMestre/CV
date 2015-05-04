@@ -1,0 +1,554 @@
+﻿<!DOCTYPE HTML>
+<html>
+<!--[if IE 7 ]>    <html class= "ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class= "ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class= "ie9"> <![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link href="css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.quicksand.js"> </script>
+    <script type="text/javascript" src="js/custom.js"> </script>
+    <script type="text/javascript" src="js/hoverIntent.js"> </script>
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"> </script>
+    <!-- <script type="text/javascript" src="js/twitter.js"> </script> -->
+    <!-- *************************   CONTACT FORM   **************************** -->
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            var active_color = '#929191'; // Colour of user provided text
+            var inactive_color = '#929191'; // Colour of default text
+            $("input.default-value").css("color", inactive_color);
+            var default_values = new Array();
+            $("input.default-value").focus(function() {
+                if (!default_values[this.id]) {
+                    default_values[this.id] = this.value;
+                }
+                if (this.value == default_values[this.id]) {
+                    this.value = '';
+                    this.style.color = active_color;
+                }
+                $(this).blur(function() {
+                    if (this.value == '') {
+                        this.style.color = inactive_color;
+                        this.value = default_values[this.id];
+                    }
+                });
+            });
+
+            $('#contactform').submit(function() {
+                formvalues = $("#contactform").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "mailer.php",
+                    data: formvalues,
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.success == 1) {
+                            $("#contactwrapper").slideUp(750, function() {
+                                $('#contactmessage').html('Thanks! Please check your email to confirm your subscription.');
+                            });
+                        } else {
+                            if (data.invalid_email == 1) {
+                                $('#email').addClass("form_error");
+                            } else {
+                                $('#email').removeClass("form_error");
+                            }
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+    <title>Carlos Mestre - Castellano</title>
+</head>
+
+<body>
+<div class="color_wrapper"></div>
+<!-- Start of header wrapper -->
+<div id="header_wrapper">
+    <!-- Start of header -->
+    <div class="header">
+        <div id="top_logo">
+            <h1>Carlos Mestre</h1>
+        </div>
+
+        <!-- Start of top download -->
+        <div id="top_download">
+            <a class="pdfdownload" href="http://masterfactories.com/cv/data/cmestre_cv.pdf" target="_blank">Descarga en PDF</a>
+        </div>
+        <div id="qr_code">
+            <a href="http://masterfactories.com">http://masterfactories.com/cv</a>
+        </div>
+
+        <!-- Description -->
+        <div class="about_one_half_first">
+            <a href="img/photo.png"><img src="img/photo_s.png" class="about_me_img" height="192" alt="me" /></a>
+            <h4>Desarrollador / DevOps</h4>
+            <p>¡Hola! Soy Carlos, apasionado por la tecnología.</p>
+            <p>Estos últimos años me he dedicado al desarrollo de Aplicaciones a medida para entorno Empresarial e Industrial.</p>
+            <p>En constante busca de nuevos conocimientos, me gusta diseñar y construir prácticamente cualquier cosa.</p>
+            <p><span class="signature">Carlos Mestre</span></p>
+        </div>
+        <!-- Contact data -->
+        <div class="about_one_half">
+            <div class="one_half_first">
+                <div class="contact_me_phone">
+                    <a href="tel:004915257086784">(+49) 152 57086784</a>
+                </div>
+            </div>
+            <div class="one_half">
+                <div class="contact_me_site">
+                    <a href="http://www.masterfactories.com/cv/">www.masterfactories.com</a>
+                </div>
+            </div>
+            <div class="one_half_first">
+                <div class="contact_me_location">
+                    <a href="https://goo.gl/maps/BjecV" target="_blank">Munich, Alemania</a>
+                </div>
+            </div>
+            <div class="one_half">
+                <div class="contact_me_email">
+                    <a href="mailto:carmesce@gmail.com">carmesce@gmail.com</a>
+                </div>
+            </div>
+
+        </div>
+    </div><!-- Eof header -->
+    <div class="clear"></div>
+</div><!-- Eof header wrapper -->
+
+<!-- Start of wrapper -->
+<div class="wrapper">
+    <div class="full_width">
+        <div class="one_half_first">
+            <h6><span class="styled_heading">Competencias</span></h6>
+            <div class="content">
+                <div class="col">
+                    <ul id="skill">
+                        <li><span class="expand systems"></span><em>Sistemas y Redes</em></li>
+                        <li><span class="expand php"></span><em>PHP</em></li>
+                        <li><span class="expand cpp"></span><em>C++</em></li>
+                        <li><span class="expand xcode"></span><em>Xcode (iOs)</em></li>
+                        <li><span class="expand bash"></span><em>Bash / Batch / Shell script</em></li>
+                        <li><span class="expand javascript"></span><em>Javascript</em></li>
+                        <li><span class="expand mysql"></span><em>MySQL</em></li>
+                        <li><span class="expand html"></span><em>HTML</em></li>
+                        <li><span class="expand css"></span><em>CSS</em></li>
+                        <li><span class="expand git"></span><em>GIT</em></li>
+                        <li><span class="expand appt"></span><em>Appcelerator Titanium</em></li>
+                        <li><span class="expand java"></span><em>Java</em></li>
+                        <li><span class="expand os"></span><em>Windows / Mac / Linux </em></li>
+                        <li><span class="expand elec"></span><em>Microcontroladores y diseño de PCB</em></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="one_half">
+            <h6><span class="styled_heading">Estudios</span></h6>
+            <ul class="education">
+                <li class="upv">
+                    <span class="small_heading">
+                        <a href="http://www.upv.es/" target="_blank">
+                            UPV - Universidad Politécnica de Valencia
+                        </a>
+                    </span>
+                    <div class="lgt_block"> OCT 2002 - ENE 2011 </div>
+                    <div class="drk_block"> INGENIERO DE TELECOMUNICACIONES </div>
+                    <div class="content2">
+                        <p>Ingeniero Técnico de Telecomunicaciones, especialidad en Telemática</p>
+                        <p>He de destacar tres cosas que aprendí en la Universidad: Tengo facilidad para asumir cualquier concepto sin importar lo difícil o complicado que parezca; soy capaz de desarrollar cualquier proyecto que idee y aplicar constancia, dedicación y esfuerzo a todas las tareas, y no sólo a las que me resulten interesantes.</p>
+                    </div>
+                </li>
+                <li class="ait">
+                    <span class="small_heading">
+                        <a href="http://www.ait.ie/" target="_blank">
+                            AIT - Athlone Institute of Technology
+                        </a>
+                    </span>
+                    <div class="lgt_block"> OCT 2007 - SEP 2009 </div>
+                    <div class="drk_block"> BACHELOR OF ENGINEERING </div>
+                    <div class="content2">
+                        <p>Bachelor of Engineering in Electronics and Wireless Communications</p>
+                        <p>En Irlanda aprendí que no solo hay una forma de enseñar. Que es mejor dividir las ideas en conceptos sencillos y escuetos, a riesgo de parecer simple. Y que distintos idiomas te hacen pensar de distinta forma. Aprendí más matemáticas y programación en menos tiempo y con menos esfuerzo en inglés que en castellano</p>
+                    </div>
+                </li>
+            </ul>
+            <div>
+                <h6><span class="styled_heading">Idiomas</span></h6>
+                <ul class="square">
+                    <li>Castellano Nativo</li>
+                    <li>Catalán Nativo</li>
+                    <li>Inglés C1</li>
+                    <li>Alemán A2</li>
+                    <li>Francés A1</li>
+                    <li>Japonés (escrito) A1</li>
+                </ul>
+            </div>
+
+        </div>
+        </div>
+        <div class="clear"></div>
+        <div class="full_width page_break">
+            <h6><span class="styled_heading">Experiencia laboral</span></h6>
+            <div class="one_half_first">
+                <ul class="none">
+                    <li>
+                        <span class="small_heading"> <u>Confidencial</u> </span>
+                        <div class="lgt_block"> SEP 2013 - PRESENTE </div>
+                        <div class="drk_block"> SENIOR DEVELOPER </div>
+                        <div class="content2">
+                            <p>Actualmente trabajo en <u>Confidencial</u></p>
+                            <p><u>Confidencial</u> es una startup con un equipo ágil, centrado en ciclos de desarrollo cortos, ágiles y rápidos. He aprendido a mucho al dedicar mi tiempo completo al los diferentes proyectos integrados en el mismo CRM.</p>
+                            <p> Vivir en Alemania y Hungría me ha permitido aprender idiomas y conocer formas distintas de resolver situaciones, y vivir lejos de mi familia y amigos me ha enseñado a afrontar muchos problemas. En general ha sido una experiencia que me ha echo evolucionar. Si se preguntan por qué leen este CV a pesar de que mi experiencia sea muy positiva: Estar lejos de la familia y seres queridos, y llevar tiempo planteando que mi remuneración no es acorde a mis funciones me han echo tener que contemplar alternativas.</p>
+                            <ul class="square">
+                                <li>Programación en PHP, Jquery, MySQL...</li>
+                                <li>Desarrollo de CRM para clientes corporativos</li>
+                                <li>Responsable de planificación y desarrollo de aplicaciones móviles</li>
+                                <li>Solución completa incluyendo IT y soporte</li>
+                                <li>Frecuentes viajes a fábricas del cliente</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="one_half">
+                <ul class="none">
+                    <li>
+                        <span class="small_heading">Freelance</span>
+                        <div class="lgt_block"> JUN 2011 - SEP 2013 </div>
+                        <div class="drk_block"> JUNIOR WEB DEVELOPER </div>
+                        <div class="content2">
+                            <p>Mi experiencia como freelance fué muy enriquecedora</p>
+                            <p>Trabajar como freelance me permitió hacer lo que más me gusta: Diseñar, y plasmar en la realidad esos diseños y seguir aprendiendo tecnologías.</p><p>Realicé varios proyectos de domótica, páginas web, blogs, perfiles y presencia online, consultorías...</p><p> Además, también formé parte de varias startups que, aunque no llegaron a ser viables, me permitieron afilar mis habilidades para el trabajo en equipo y vivir experiencias enriquecedoras. Finalmente, una evaluación sincera de mis habilidades comerciales, y la falta de un socio que supliera mis carencias me instigaron a buscar trabajo como empleado.</p>
+                            <ul class="square">
+                                <li><a href="http://despachosvalencia.com"> despachosValencia.com</a></li>
+                                <li><a href="http://vsarobe.com.com">VSarobe.com</a></li>
+                                <li><a href="http://streamingdjs.com">streamingDJs.com</a></li>
+                                <li><a href="data/DOCUMENTO%20DE%20PRESENTACI&Oacute;N.pdf">Conecta un sueño</a></li>
+                                <li>VideonWall</li>
+                                <li>Proyectos de domótica y automatismos para particulares</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+           <div class="one_half_first">
+                <ul class="none">
+                    <li>
+                        <span class="small_heading">Games Valley </span>
+                        <div class="lgt_block"> SEP 2001 - OCT 2002 </div>
+                        <div class="drk_block"> PROPIETARIO Y GERENTE </div>
+                        <div class="content2">
+                            <p>Probablemente la mejor época de mi vida</p>
+                            <p>A punto de cumplir 18 años, pedí un préstamo y adquirí el traspaso de una tienda de alquiler de Videojuegos. Cambié el negocio principal de venta/alquiler de juegos y consolas, al uso por horas de ordenadores y maquinas de juegos. Trataba con el público, tenia responsabilidades, dinero y videojuegos. No sé que más pedirle a un trabajo. </p>
+                            <ul class="square">
+                                <li>Evaluación de costes y beneficios</li>
+                                <li>Trato con distribuidores de hardware, material de oficina y videojuegos</li>
+                                <li>Venta de Sistemas al por menor</li>
+                                <li>Gestión del negocio: gestoras, bancos, seguridad social, contratos...</li>
+                                <li>Autónomo</li>
+                                <li>Tuve un empleado por periodo de 5 meses</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="one_half">
+                <ul class="none">
+                    <li>
+                        <span class="small_heading">Otros</span>
+                        <div class="lgt_block"> 2010 ~ 2011 </div>
+                        <div class="drk_block"> PROFESOR, TÉCNICO DE SISTEMAS... </div>
+                        <div class="content2">
+                            <p>No me gusta aburrirme</p>
+                            <p>A lo largo de los años he tenido varios trabajos poco relevantes o de corta duración. Aunque ha sido lo habitual, no siempre he desempeñando funciones técnicas. Entre lo que he echo de lo que más me ha gustado ha sido ser profesor: No solo disfruto enseñando sino que mis alumnos me han alabado en más de una ocasión. </p>
+                            <ul class="square">
+                                <li>Profesor Privado</li>
+                                <li>Profesor en Centro Ciencias Información S.L.</li>
+                                <li>Técnico de IT en Soporte Informático Valdelasfuentes S.L.</li>
+                                <li>Camarero en cafeteria de estación</li>
+                                <li>Dependiente en sección de frescos en Carrefour</li>
+                                <li>Ayudante de cocina</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="full_width page_break_f">
+            <h6 class="hidden"><span class="styled_heading">Employment Timeline</span></h6>
+            <div class="hidden timeline">
+                <!-- width=the length that will display - left=100 less width set ie 100-42=58 etc etc -->
+                <ul class="events">
+                    <li class="red" style="width: 40%; left: 60%;">Whistle Marketing</li>
+                    <li class="dark" style="width: 35%; left: 25%;">Envato</li>
+                    <li class="light" style="width: 25%; left: 0%;">Google</li>
+                </ul>
+
+                <ul class="intervals">
+                    <li class="first">2003</li>
+                    <li>2007</li>
+                    <li>2008</li>
+                    <li>2009</li>
+                    <li>2010</li>
+                    <li>2011</li>
+                    <li class="last">2012</li>
+                </ul>
+            </div>
+
+
+            <div class="clear2"></div>
+            <div class="one_half_first">
+                <h6><span class="styled_heading">Sobre mi</span></h6>
+                    <div class="content3">
+                    <p>Tengo aptitudes que me hacen buen informático y/o programador.
+                    <br><br>
+                    Soy inteligente, paciente, curioso, perseverante y perfeccionista.
+                    <br>Tengo atención por el detalle y aversión al fracaso.
+                    <br>Disfruto cuando me enfrento a nuevos retos
+                    <br>No me gusta pedir o necesitar a otras personas, aunque me encanta que me ayuden si dan cuenta de que me hace falta.
+                    <br>Intento tratar a cada uno tal y como el trata a los demás</p>
+                    </div>
+            </div>
+
+            <div class="one_half">
+
+                <h6><span class="styled_heading">Intereses</span></h6>
+                <ul class="square">
+                    <li>Juegos de construcción</li>
+                    <li>Videojuegos</li>
+                    <li>Exploración Espacial</li>
+                    <li>Ciencia ficción</li>
+                    <li>Juegos Mesa</li>
+                    <li>Cocina</li>
+                    <li>15 años de artes marciales</li>
+                    <li>Esquí, submarinismo</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+    <div class="full_width">
+        <h6><span class="styled_heading">Portfolio</span></h6>
+        <ul id="filter" class="hidden ">
+            <li class="segment-1 selected-1 active">
+                <a data-value="all" href="#">All</a><span class="sep"></span>
+            </li>
+            <li class="segment-39">
+                <a data-value="term-39" href="#">Graphics</a><span class="border"></span><span class="sep"></span>
+            </li>
+            <li class="segment-38">
+                <a data-value="term-38" href="#">Image</a><span class="border"></span><span class="sep"></span>
+            </li>
+            <li class="segment-37">
+                <a data-value="term-37" href="#">Print</a><span class="border"></span><span class="sep"></span>
+            </li>
+            <li class="segment-36">
+                <a data-value="term-36" href="#">Web</a><span class="border"></span><span class="sep"></span>
+            </li>
+        </ul>
+
+        <div id="portfolio-bg" class="clearfix">
+            <ul class="image-grid grid clearfix">
+                <li class="term-36" data-id="id-1">
+                    <div>
+                        <div class="post-thumb post-tumb-img clearfix ">
+                            <a  href="http://despachosvalencia.com"
+                                title="Despachos Valencia"
+                                target="_blank"
+                                class="prettyPhoto[portfolio]">
+                                <img src="img/portfolio_despachos.png" alt="Despachos Valencia" width="295" height="174" />
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="term-36" data-id="id-2">
+                    <div>
+                        <div class="post-thumb post-tumb-img clearfix">
+                            <a  href="http://streamingdjs.com"
+                                title="streamingDJs"
+                                target="_blank"
+                                class="prettyPhoto[portfolio]">
+                                <img src="img/portfolio_djs.png" alt="streamingDJs" width="295" height="174" />
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="term-36" data-id="id-3">
+                    <div>
+                        <div class="post-thumb post-tumb-img clearfix">
+                            <a  href="http://vsarobe.com"
+                                title="VSarobe"
+                                target="_blank"
+                                class="prettyPhoto[portfolio]">
+                                <img src="img/portfolio_vsarobe.png" alt="VSarobe" width="295" height="174" />
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="term-38" data-id="id-4">
+                    <div>
+                        <div class="post-thumb post-tumb-img clearfix ">
+                            <a  href="img/portfolio_code.png"
+                                title="Codigo en SublimeText"
+                                class="prettyPhoto[portfolio]">
+                                <img src="img/portfolio_code_small.png" alt="Codigo en SublimeText" width="295" height="174" />
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="term-38" data-id="id-5">
+                    <div>
+                        <div class="post-thumb post-tumb-img clearfix ">
+                            <a  href="data/DOCUMENTO%20DE%20PRESENTACI&Oacute;N.pdf"
+                                title="Conecta un Sue&ntilde;o"
+                                target="_blank"
+                                class="prettyPhoto[portfolio]">
+                                <img src="img/portfolio_cus.png" alt="Conecta un Sue&ntilde;o" width="295" height="174" />
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="clear2"></div>
+
+    <!-- ****** CONTACT FORM AND TWITTER TIMELINE DISABLED (class d) ********-->
+    <div class="hidden full_width">
+        <div class="one_half_first">
+        <h6><span class="styled_heading">Contact</span></h6>
+        <form action="mailer.php" id="contact_form" method="post">
+            <ul class="form">
+                <li class="short">
+                    <label>First Name<span class="required"></span></label>
+                    <input
+                        type="text"
+                        name="first"
+                        id="first"
+                        value="First Name"
+                        class="requiredField"
+                        onblur="if(this.value == '') { this.value = 'First Name'; }"
+                        onfocus="if(this.value == 'First Name') { this.value = ''; }"
+                    />
+                </li>
+                <li class="short">
+                    <label>Last Name<span class="required"></span></label>
+                    <input
+                        type="text"
+                        name="last"
+                        id="last"
+                        value="Last Name"
+                        class="requiredField"
+                        onblur="if(this.value == '') { this.value = 'Last Name'; }"
+                        onfocus="if(this.value == 'Last Name') { this.value = ''; }"
+                    />
+                </li>
+                <li class="long">
+                    <label>Email Address<span class="required"></span></label>
+                    <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        value="Email Address"
+                        class="requiredField email"
+                        onblur="if(this.value == '') { this.value = 'Email Address'; }"
+                        onfocus="if(this.value == 'Email Address') { this.value = ''; }"
+                    />
+                </li>
+                <li class="short">
+                    <label>Company Name</label>
+                    <input
+                        type="text"
+                        name="company"
+                        id="company"
+                        value="Company Name"
+                        class="requiredField"
+                        onblur="if(this.value == '') { this.value = 'Company Name'; }"
+                        onfocus="if(this.value == 'Company Name') { this.value = ''; }"
+                        />
+                </li>
+                <li class="short">
+                    <label>Telephone Number</label>
+                    <input
+                        type="text"
+                        name="phone"
+                        id="phone"
+                        value="Telephone Number"
+                        class="requiredField"
+                        onblur="if(this.value == '') { this.value = 'Telephone Number'; }"
+                        onfocus="if(this.value == 'Telephone Number') { this.value = ''; }"
+                    />
+                </li>
+                <li class="textarea">
+                    <label>Message<span class="required"></span></label>
+                    <textarea name="message" id="message" rows="20" cols="30"></textarea>
+                </li>
+                <li class="button">
+                    <input
+                        name="submitted"
+                        id="submitted"
+                        value="Submit"
+                        class="submit"
+                        type="submit"
+                    />
+                </li>
+            </ul>
+            </form>
+        </div>
+        <div class="one_half">
+        <h6><span class="styled_heading">On The Web</span></h6>
+            <div class="twitter_message_content">
+                <div class="tweet">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear2"></div>
+    <div id="footer_wrapper">
+        <div class="footer">
+            <div class="copyright">
+                La información en este documento solo podrá ser utilizada con fines de candidatura.
+            </div>
+            <div class="social_section">
+                <div class="hidden facebook">
+                    <a href="http://facebook.com" target="_blank"></a>
+                </div>
+                <div class="hidden flickr">
+                    <a href="http://flickr.com" target="_blank"></a>
+                </div>
+                <div class="linkedin">
+                    <a href="http://de.linkedin.com/in/carlosmestre/es" target="_blank"></a>
+                </div>
+                <div class="tweets">
+                    <a href="https://twitter.com/CARMESCE" target="_blank"></a>
+                </div>
+                <div class="hidden deviant">
+                    <a href="http://www.deviantart.com/" target="_blank"></a>
+                </div>
+                <div class="hidden dribbble">
+                    <a href="http://dribbble.com/" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="color_wrapper"/>
+
+<!-- PRETTYPHOTO CODE -->
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $("a[class^='prettyPhoto']").prettyPhoto({showTitle: true});
+        $("a[class^='prettyPhoto']").prettyPhoto({social_tools:false});
+    });
+</script>
+
+</body>
+</html>
